@@ -2,7 +2,6 @@ const { Router } = require("express");
 const xml2js = require('xml2js');
 
 const router = new Router();
-
 const fs = require("fs");
 
 
@@ -30,8 +29,7 @@ router.get("/combinedApis", (req,res) => {
                 console.error(err);
             }
             else {
-                xml2js.parseString(result, (err, data) => {
-                    
+                xml2js.parseString(result, {explicitArray: false}, (err, data) => {
                     if(err) {
                         throw err;
                     }
